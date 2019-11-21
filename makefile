@@ -21,7 +21,7 @@ all: build/$(triplet)/$(type)/CMakeCache.txt
 
 run: build/$(triplet)/$(type)/CMakeCache.txt
 	@cmake --build build/$(triplet)/$(type) --target $(target)
-	@cd build/$(triplet)/$(type) && ./$(target)
+	@cd build/$(triplet)/$(type) && LD_LIBRARY_PATH=. ./$(target)
 
 clean:
 	@cmake -E remove_directory build/$(triplet)
