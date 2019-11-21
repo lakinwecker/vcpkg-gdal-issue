@@ -29,7 +29,7 @@ set(LIBRARIES ${LIBRARIES} GDAL::GDAL)
 
 # proj4
 find_package(PROJ4 REQUIRED)
-set(LIBRARIES ${LIBRARIES} proj)
+set(LIBRARIES ${LIBRARIES} PROJ4::proj)
 
 add_executable(example example.cpp)
 target_link_libraries(example ${LIBRARIES})
