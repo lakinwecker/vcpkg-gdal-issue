@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "name": "Debug",
+      "generator": "Ninja",
+      "configurationType": "Debug",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
+      "cmakeToolchain": "${env.VCPKG_ROOT}\\scripts\\buildsystems\\vcpkg.cmake",
+      "installRoot": "${projectDir}\\build\\${env.VCPKG_DEFAULT_TRIPLET}\\debug-install",
+      "buildRoot": "${projectDir}\\build\\${env.VCPKG_DEFAULT_TRIPLET}\\debug",
+      "variables": [
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "${env.VCPKG_DEFAULT_TRIPLET}"
+        }
+      ]
+    },
+    {
+      "name": "Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "inheritEnvironments": [ "msvc_x64_x64" ],
+      "cmakeExecutable": "C:\\Program Files\\CMake\\bin\\cmake.exe",
+      "cmakeToolchain": "${env.VCPKG_ROOT}\\scripts\\buildsystems\\vcpkg.cmake",
+      "installRoot": "${projectDir}\\build\\${env.VCPKG_DEFAULT_TRIPLET}\\release-install",
+      "buildRoot": "${projectDir}\\build\\${env.VCPKG_DEFAULT_TRIPLET}\\release",
+      "variables": [
+        {
+          "name": "VCPKG_TARGET_TRIPLET",
+          "value": "${env.VCPKG_DEFAULT_TRIPLET}"
+        }
+      ]
+    }
+  ]
+}

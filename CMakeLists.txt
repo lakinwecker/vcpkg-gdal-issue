@@ -29,7 +29,10 @@ set(LIBRARIES ${LIBRARIES} GDAL::GDAL)
 
 # proj4
 find_package(PROJ4 REQUIRED)
-set(LIBRARIES ${LIBRARIES} PROJ4::proj)
+#set(LIBRARIES ${LIBRARIES} PROJ4::proj)  # no need to link if you don't use it directly
+
+get_target_property(PROJ4_RELEASE_DLL PROJ4::proj IMPORTED_LOCATION_RELEASE)
+file(COPY ${PROJ4_RELEASE_DLL} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(example example.cpp)
 target_link_libraries(example ${LIBRARIES})
