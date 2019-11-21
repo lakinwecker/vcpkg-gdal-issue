@@ -33,8 +33,15 @@ find_package(PROJ4 REQUIRED)
 
 get_target_property(PROJ4_RELEASE_DLL PROJ4::proj IMPORTED_LOCATION_RELEASE)
 file(COPY ${PROJ4_RELEASE_DLL} DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+  get_filename_component(PROJ4_RELEASE_DLL_NAME ${PROJ4_RELEASE_DLL} NAME)  
+  file(RENAME
+    ${CMAKE_CURRENT_BINARY_DIR}/${PROJ4_RELEASE_DLL_NAME}
+    ${CMAKE_CURRENT_BINARY_DIR}/libproj.so)
+endif()
 
 add_executable(example example.cpp)
 target_link_libraries(example ${LIBRARIES})
 target_include_directories(example PRIVATE ${INCLUDES})
 target_compile_definitions(example PRIVATE ${DEFINITIONS})
+set_target_properties(example PROPERTIES INSTALL_RPATH "./" BUILD_RPATH "./")
